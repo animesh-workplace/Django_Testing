@@ -20,9 +20,4 @@ from updates.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/updates/', include('updates.api.urls')),
-    # path('json/example', json_example_view),
-    # path('json/cbv', JsonCBV.as_view()),
-    # path('json/cbv2', JsonCBV2.as_view()),
-    # path('json/serialized/lists', SerializedListView.as_view()),
-    # path('json/serialized/detail', SerializedDetailView.as_view()),
 ]

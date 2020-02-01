@@ -1,8 +1,9 @@
 from django.views.generic import View
 from django.http import HttpResponse
 from updates.models import Update as UpdateModel
+from .mixins import *
 
-class UpdateModelDetailAPIView(View):
+class UpdateModelDetailAPIView(CSRFExemptMixin, View):
 	def get(self, request, id, *args, **kwargs):
 		obj = UpdateModel.objects.get(id = id)
 		json_data = obj.serialize()
@@ -17,7 +18,7 @@ class UpdateModelDetailAPIView(View):
 	def delete(self, request, *args, **kwargs):
 		return HttpResponse({}, content_type = 'application/json')
 
-class UpdateModelListAPIView(View):
+class UpdateModelListAPIView(CSRFExemptMixin, View):
 	def get(self, request, *args, **kwargs):
 		qs = UpdateModel.objects.all()
 		json_data = qs.serialize()
